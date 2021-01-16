@@ -7,6 +7,9 @@ from spotipy.oauth2 import SpotifyOAuth
 import re
 import difflib
 
+username = input("What is your username on spotify?")
+name = input("What do you want the playlist to be called?")
+
 # Keys that are required for requests to be made, stored as environment variables
 spotipy_client_id = os.environ["SPOTIPY_CLIENT_ID"]
 spotipy_client_secret = os.environ["SPOTIPY_CLIENT_SECRET"]
@@ -34,8 +37,7 @@ for x in songInfo:
 scope = 'playlist-modify-public'
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 
-username = "_.joey._.f"
-name = "Test Name"
+
 # Create an empty playlist
 playlist_id = sp.user_playlist_create(username, name, public=True, collaborative=False, description='')["id"]
 
